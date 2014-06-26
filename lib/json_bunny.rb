@@ -27,6 +27,22 @@ module JsonBunny
     def default_exchange
       Exchange.new(@raw_channel.default_exchange)
     end
+
+    def ack(delivery_tag, multiple=false)
+      @raw_channel.ack(delivery_tag, multiple)
+    end
+
+    def nack(delivery_tag, multiple=false, requeue=false)
+      @raw_channel.reject(delivery_tag, multiple, requeue)
+    end
+
+    def reject(delivery_tag, requeue=false)
+      @raw_channel.reject(delivery_tag, requeue)
+    end
+
+    def prefetch(count)
+      @raw_channel.prefetch(count)
+    end
   end
 
   class Queue
