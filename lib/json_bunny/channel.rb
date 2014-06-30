@@ -1,6 +1,7 @@
 require 'json_bunny/exchange'
 require 'json_bunny/queue'
 require 'json_bunny/rpc_client'
+require 'json_bunny/rpc_server'
 
 module JsonBunny
   class Channel
@@ -30,6 +31,10 @@ module JsonBunny
 
     def rpc_client(routing_key, timeout=5)
       RpcClient.new(self, routing_key, timeout)
+    end
+
+    def rpc_server(queue_name)
+      RpcServer.new(self, queue_name)
     end
 
     def ack(delivery_tag, multiple=false)
