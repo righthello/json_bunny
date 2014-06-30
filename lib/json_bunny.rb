@@ -60,6 +60,10 @@ module JsonBunny
         block.call(delivery_info, metadata, event)
       end
     end
+
+    def name
+      @raw_queue.name
+    end
   end
 
   class Exchange
