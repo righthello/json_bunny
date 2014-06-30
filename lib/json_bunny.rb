@@ -43,6 +43,10 @@ module JsonBunny
     def prefetch(count)
       @raw_channel.prefetch(count)
     end
+
+    def kill_work_pool
+      @raw_channel.work_pool.kill
+    end
   end
 
   class Queue
