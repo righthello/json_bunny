@@ -88,6 +88,10 @@ module JsonBunny
       @connection.start
     end
 
+    def close
+      @connection.close
+    end
+
     def create_channel
       Channel.new(@connection.create_channel)
     end
