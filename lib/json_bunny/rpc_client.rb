@@ -26,7 +26,7 @@ module JsonBunny
           if properties.correlation_id == correlation_id
             response = payload
             delivery_info.consumer.cancel
-            channel.kill_work_pool
+            @channel.kill_work_pool
           end
         end
       end
