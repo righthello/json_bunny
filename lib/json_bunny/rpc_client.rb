@@ -21,12 +21,13 @@ module JsonBunny
       })
 
       response = nil
+      channel = @channel
       Timeout.timeout(@timeout) do
         queue.subscribe(block: true) do |delivery_info, properties, payload|
           if properties.correlation_id == correlation_id
             response = payload
             delivery_info.consumer.cancel
-            @channel.kill_work_pool
+            channel.kill_work_pool
           end
         end
       end
