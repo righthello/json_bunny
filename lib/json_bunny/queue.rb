@@ -20,5 +20,13 @@ module JsonBunny
     def name
       @raw_queue.name
     end
+
+    def message_count
+      @raw_queue.message_count
+    end
+
+    def consumer_count
+      @raw_queue.consumer_count
+    end
   end
 end
