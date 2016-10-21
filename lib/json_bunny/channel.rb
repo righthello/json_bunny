@@ -17,8 +17,8 @@ module JsonBunny
       Exchange.new(@raw_channel.fanout(name))
     end
 
-    def topic(name)
-      Exchange.new(@raw_channel.topic(name))
+    def topic(name, opts={})
+      Exchange.new(@raw_channel.topic(name, opts))
     end
 
     def direct(name)
