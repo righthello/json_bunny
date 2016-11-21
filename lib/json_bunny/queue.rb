@@ -28,5 +28,9 @@ module JsonBunny
     def consumer_count
       @raw_queue.consumer_count
     end
+
+    def purge
+      @raw_queue.purge
+    end
   end
 end
