@@ -49,8 +49,8 @@ module JsonBunny
       @raw_channel.register_exchange(exchange)
     end
 
-    def basic_publish(payload, opts = {})
-      @raw_channel.basic_publish(payload, self.name, (opts.delete(:routing_key) || opts.delete(:key)), opts)
+    def basic_publish(payload, exchange, routing_key, opts = {})
+      @raw_channel.basic_publish(payload, exchange, routing_key, opts)
     end
 
     def nack(delivery_tag, multiple=false, requeue=false)
