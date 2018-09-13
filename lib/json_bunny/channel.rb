@@ -49,6 +49,10 @@ module JsonBunny
       @raw_channel.register_exchange(exchange)
     end
 
+    def basic_publish(payload, opts = {})
+      @raw_channel.basic_publish(payload, opts)
+    end
+
     def nack(delivery_tag, multiple=false, requeue=false)
       @raw_channel.reject(delivery_tag, multiple, requeue)
     end
