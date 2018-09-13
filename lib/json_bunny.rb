@@ -19,7 +19,8 @@ module JsonBunny
         :product      => connection_banner || "Bunny",
         :platform     => ::RUBY_DESCRIPTION,
         :version      => Bunny::VERSION,
-        :information  => "http://rubybunny.info"
+        :information  => "http://rubybunny.info",
+        :channel_max => 65535
       }
       @connection = ::Bunny.new(connection_string, properties: properties)
     end
