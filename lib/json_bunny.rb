@@ -6,7 +6,10 @@ require 'json_bunny/channel'
 module JsonBunny
   class Connection
     def initialize(connection_string, connection_banner=nil)
-      properties = {
+      options = {
+        :channel_max => 65535,
+
+      properties: {
         :capabilities => {
           :publisher_confirms           => true,
           :consumer_cancel_notify       => true,
@@ -20,9 +23,9 @@ module JsonBunny
         :platform     => ::RUBY_DESCRIPTION,
         :version      => Bunny::VERSION,
         :information  => "http://rubybunny.info",
-        :channel_max => 65535
       }
-      @connection = ::Bunny.new(connection_string, properties: properties)
+      }
+      @connection = ::Bunny.new(connection_string, options)
     end
 
     def start
