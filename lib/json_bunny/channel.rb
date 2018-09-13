@@ -50,7 +50,7 @@ module JsonBunny
     end
 
     def basic_publish(payload, opts = {})
-      @raw_channel.basic_publish(payload, opts)
+      @raw_channel.basic_publish(payload, self.name, (opts.delete(:routing_key) || opts.delete(:key)), opts)
     end
 
     def nack(delivery_tag, multiple=false, requeue=false)
