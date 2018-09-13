@@ -7,7 +7,12 @@ module JsonBunny
     end
 
     def bind(exchange, opts={})
-      @raw_queue.bind(exchange.raw_exchange, opts)
+      if exchange.class.method_defined? :raw_exchange
+        @raw_queue.bind(exchange.raw_exchange, opts)
+      else
+        @raw_queue.bind(exchange, opts)
+      end
+
     end
 
     def subscribe(opts={}, &block)
