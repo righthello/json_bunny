@@ -41,6 +41,10 @@ module JsonBunny
       @raw_channel.ack(delivery_tag, multiple)
     end
 
+    def exchange_declare(name, type, opts = {})
+      @raw_channel.exchange_declare(name, type, opts)
+    end
+
     def nack(delivery_tag, multiple=false, requeue=false)
       @raw_channel.reject(delivery_tag, multiple, requeue)
     end
