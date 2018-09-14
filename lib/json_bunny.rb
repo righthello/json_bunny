@@ -5,6 +5,8 @@ require 'json_bunny/channel'
 
 module JsonBunny
   class Connection
+    attr_reader :connection
+
     def initialize(connection_string, connection_banner=nil)
       options = {
         :channel_max => 65535,
